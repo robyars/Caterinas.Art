@@ -5,11 +5,9 @@
     <style>
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     margin: 0;
-    position: relative;
-    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
 }
 
 header, footer {
@@ -54,13 +52,13 @@ footer a:hover {
 }
 
 main {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 15px;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
 }
 
 
@@ -71,6 +69,8 @@ main {
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+    height: calc(100vh - 160px);
+    overflow: auto;
 }
 
 .main-slider {

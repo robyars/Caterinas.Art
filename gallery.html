@@ -61,50 +61,43 @@ main {
     border-radius: 15px;
 }
 
-
-/* Swiper styles */
-.slider-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+.swiper-container {
     width: 100%;
-    height: calc(100vh - 160px);
-    overflow: auto;
-    padding: 10px 0;
 }
 
 .main-slider {
-    width: 100%;
-    height: 50vh;
-}
-.thumb-slider {
-    width: 100%;
-    height: 20vh; 
+    height: 500px;
 }
 
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
+.main-slider .swiper-slide {
     display: flex;
-    align-items: center;
     justify-content: center;
-} 
+    align-items: center;
+}
 
-.swiper-slide img {
+.main-slider .swiper-slide img {
     max-width: 100%;
-    height: auto;
+    max-height: 100%;
+    object-fit: cover; /* This will ensure the image covers the entire slide */
 }
 
-.thumb-container {
-    margin-top: 20px;
+.thumb-slider {
     height: 100px;
+    padding: 10px 0;
 }
-.thumb-image {
+
+.thumb-slider .swiper-slide {
     width: auto;
-    height: 100%;
+    height: 80px;
+    margin-right: 10px;
 }
+
+.thumb-slider .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* This will ensure the entire image is visible within the thumbnail slide */
+}
+
     </style>
 	<link
       rel="stylesheet"
@@ -125,21 +118,21 @@ main {
     <main>
     <h1>Gallery</h1>
 
-    <div class="slider-container">
-        <div class="swiper-container main-slider">
-            <div class="swiper-wrapper">
-                <!-- Slides will be added dynamically -->
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-
-        <div class="swiper-container thumb-slider">
-            <div class="swiper-wrapper">
-                <!-- Thumbnails will be added dynamically -->
-            </div>
+    <<div class="slider-container">
+    <div class="swiper-container thumb-slider">
+        <div class="swiper-wrapper">
+            <!-- Thumbnails will be added dynamically -->
         </div>
     </div>
+
+    <div class="swiper-container main-slider">
+        <div class="swiper-wrapper">
+            <!-- Slides will be added dynamically -->
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
 </main>
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -171,27 +164,26 @@ main {
         document.querySelector('.thumb-slider .swiper-wrapper').appendChild(thumb);
     }
 
-    // Initialize main slider
-    var mainSlider = new Swiper('.main-slider', {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
+// Initialize main slider
+var mainSlider = new Swiper('.main-slider', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
 
-    // Initialize thumbnail slider
-    var thumbSlider = new Swiper('.thumb-slider', {
-        slidesPerView: 5,
-        freeMode: true,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-    });
+// Initialize thumbnail slider
+var thumbSlider = new Swiper('.thumb-slider', {
+    slidesPerView: 10,
+    freeMode: true,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+});
 
-    // Link main slider and thumbnail slider
-    mainSlider.controller.control = thumbSlider;
-    thumbSlider.controller.control = mainSlider;
+// Link main slider and thumbnail slider
+mainSlider.controller.control = thumbSlider;
 </script>
 
 </body>

@@ -1,96 +1,108 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gallery - Your Name</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+    <title>Caterina's Gallery - Oil Paintings</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(to bottom, #ffffff 0%,#e6e6e6 100%);
-        }
-        header, footer {
-            background-color: #333;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 0;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            display: inline-block;
-            margin: 0 10px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-        main {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-		display: block;
-	  
-        }
-	  .slider-for img, .slider-nav img {
-    max-width: 100%;
-    height: auto;
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    position: relative;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
 }
 
-.slider-nav {
+header, footer {
+    background-color: #333;
+    color: #fff;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    align-items: center;
+    padding: 20px 0;
+} 
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
 }
 
-
-.slider-for img, .slider-nav img {
-    max-width: 100%;
-    max-height: 500px;  /* Adjust this value as needed */
-    height: auto;
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
-.slider-wrap {
-    max-width: 1000px;  /* Adjust as needed */
-    margin: 0 auto;
-}
-
-.owl-theme .owl-nav {
-    /* optional: center the navigation buttons */
-    text-align: center;
-}
-
-.owl-theme .owl-nav [class*=owl-] {
-    color: #FFF;
-    font-size: 14px;
-    margin: 5px;
-    padding: 4px 7px;
-    background: #d6d6d6;
+nav ul li {
     display: inline-block;
-    cursor: pointer;
-    border-radius: 3px;
+    margin: 0 10px;
 }
 
-.owl-theme .owl-nav [class*=owl-]:hover {
-    background: #869791;
-    color: #FFF;
+nav ul li a {
+    color: #fff;
     text-decoration: none;
 }
+
+footer a {
+    color: #fff;  /* white text color */
+}
+
+footer a:hover {
+    color: #ddd;  /* lighter grey color on hover */
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+}
+
+
+/* Swiper styles */
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.main-slider {
+    width: 100%;
+    height: 33vh; /* adjust as per requirement */
+}
+.thumb-slider {
+    width: 100%;
+    height: 10vh; /* adjust as per requirement */
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.thumb-container {
+    margin-top: 20px;
+    height: 100px;
+}
+.thumb-image {
+    width: auto;
+    height: 100%;
+}
     </style>
+	<link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
 </head>
 <body>
     <header>
@@ -103,121 +115,80 @@
         </nav>
     </header>
 
-<main>
+    <main>
     <h1>Gallery</h1>
-    <div class="slider-wrap">
-        <div class="slider-for">
-            <!-- Main images will be added here by JavaScript -->
+
+    <div class="slider-container">
+        <div class="swiper-container main-slider">
+            <div class="swiper-wrapper">
+                <!-- Slides will be added dynamically -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
-        <div class="slider-nav">
-            <!-- Navigation images will be added here by JavaScript -->
+
+        <div class="swiper-container thumb-slider">
+            <div class="swiper-wrapper">
+                <!-- Thumbnails will be added dynamically -->
+            </div>
         </div>
     </div>
 </main>
 
-
-    <footer>
-        <p>© 2023 Ecaterina Timofti</p>
-    </footer>
-
-    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
-$(document).ready(function(){
-    // Array of image filenames
-    var images = ['Gallery/artwork1.jpeg', 'Gallery/artwork2.jpeg', 'Gallery/artwork3.jpeg', 'Gallery/artwork4.jpeg', 'Gallery/artwork5.jpeg', 'Gallery/artwork6.jpeg', 'Gallery/artwork7.jpeg', 'Gallery/artwork8.jpeg', 'Gallery/artwork9.jpeg', 'Gallery/artwork10.jpeg', 'Gallery/artwork11.jpeg', 'Gallery/artwork12.jpeg', 'Gallery/artwork13.jpeg', 'Gallery/artwork14.jpeg', 'Gallery/artwork15.jpeg', 'Gallery/artwork16.jpeg', 'Gallery/artwork17.jpeg','Gallery/artwork18.jpeg', 'Gallery/artwork19.jpeg', 'Gallery/artwork20.jpeg', /* add more filenames as needed */];
+    var totalSlides = 20;
+    var slideImages = [];
 
-	// Generate the HTML
-    var htmlFor = '';
-    var htmlNav = '';
-    for (var i = 0; i < images.length; i++) {
-        htmlFor += '<div class="item"><img src="' + images[i] + '" alt="Artwork ' + (i+1) + '"></div>';
-        htmlNav += '<div class="item"><img src="' + images[i] + '" alt="Artwork ' + (i+1) + '"></div>';
+    // Creating an array of image names
+    for (let i = 1; i <= totalSlides; i++) {
+        slideImages.push('Gallery/artwork' + i + '.jpeg');
     }
 
-    // Add the HTML to the .slider-for and .slider-nav div
-    $('.slider-for').html(htmlFor);
-    $('.slider-nav').html(htmlNav);
+    // Initialize main slider
+    var mainSlider = new Swiper('.main-slider', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
 
-    // Initialize Owl Carousels
-    var sync1 = $(".slider-for");
-    var sync2 = $(".slider-nav");
-    var syncedSecondary = true;
+    // Initialize thumbnail slider
+    var thumbSlider = new Swiper('.thumb-slider', {
+        slidesPerView: 5,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+    });
 
-    // Initialize Owl Carousels
-var sync1 = $(".slider-for");
-var sync2 = $(".slider-nav");
+    // Link main slider and thumbnail slider
+    mainSlider.controller.control = thumbSlider;
+    thumbSlider.controller.control = mainSlider;
 
-	sync1.owlCarousel({
-    items: 1,
-    slideSpeed: 2000,
-    nav: true,
-    autoplay: true,
-    dots: true,
-    loop: true,
-    responsiveRefreshRate: 200,
-    navText: ["<", ">"],
-}).on('changed.owl.carousel', syncPosition);
+    // Add slides
+    for (let i = 0; i < totalSlides; i++) {
+        var slide = document.createElement('div');
+        slide.className = 'swiper-slide';
 
-	sync2.owlCarousel({
-    items : 3,
-    dots: true,
-    nav: true,
-    smartSpeed: 200,
-    slideSpeed: 500,
-    slideBy: 3, 
-    responsiveRefreshRate: 100,
-    navText: ["<", ">"],
-}).on('changed.owl.carousel', syncPosition2);
+        var img = document.createElement('img');
+        img.src = slideImages[i];
+        slide.appendChild(img);
+        mainSlider.appendSlide(slide);
 
-
-    function syncPosition(el) {
-        var count = el.item.count-1;
-        var current = Math.round(el.item.index - (el.item.count/2) - .5);
-        
-        if(current < 0) {
-            current = count;
-        }
-        if(current > count) {
-            current = 0;
-        }
-
-        sync2
-        .find(".owl-item")
-        .removeClass("current")
-        .eq(current)
-        .addClass("current");
-        var onscreen = sync2.find('.owl-item.active').length - 1;
-        var start = sync2.find('.owl-item.active').first().index();
-        var end = sync2.find('.owl-item.active').last().index();
-
-        if (current > end) {
-            sync2.data('owl.carousel').to(current, 100, true);
-        }
-        if (current < start) {
-            sync2.data('owl.carousel').to(current - onscreen, 100, true);
-        }
+        var thumb = document.createElement('div');
+        thumb.className = 'swiper-slide';
+        var thumbImg = document.createElement('img');
+        thumbImg.src = slideImages[i];
+        thumbImg.className = 'thumb-image';
+        thumb.appendChild(thumbImg);
+        thumbSlider.appendSlide(thumb);
     }
-
-    function syncPosition2(el) {
-        if(syncedSecondary) {
-            var number = el.item.index;
-            sync1.data('owl.carousel').to(number, 100, true);
-        }
-    }
-
-    sync1.on('change.owl.carousel', function(event) {
-    sync2.trigger('to.owl.carousel', [event.item.index, 300, true]);
-}).on('dragged.owl.carousel', function(event) {
-    sync2.trigger('to.owl.carousel', [event.item.index, 300, true]);
-});
-
-sync2.on('click', '.owl-item', function(e) {
-    e.preventDefault();
-    sync1.trigger('to.owl.carousel', [$(this).index(), 300, true]);
-	});
-
-});
 </script>
-    </body>
+</body>
+    <footer>
+    <p>© 2023 Ecaterina Timofti | SMS: <a href="sms:+4746388048">+47 463 88 048</a> | <a href="https://www.instagram.com/oslo_nails_caterina/" target="_blank">Instagram</a></p>
+	</footer> 
 </html>
+	

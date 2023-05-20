@@ -8,6 +8,7 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     margin: 0;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
 }
 
 header, footer {
@@ -20,7 +21,7 @@ header, footer {
 } 
 
 footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     height: 80px;
@@ -58,7 +59,6 @@ main {
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 15px;
-    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
 }
 
 
@@ -71,15 +71,16 @@ main {
     width: 100%;
     height: calc(100vh - 160px);
     overflow: auto;
+    padding: 10px 0;
 }
 
 .main-slider {
     width: 100%;
-    height: 33vh; /* adjust as per requirement */
+    height: 50vh;
 }
 .thumb-slider {
     width: 100%;
-    height: 10vh; /* adjust as per requirement */
+    height: 20vh; 
 }
 
 .swiper-slide {
@@ -89,7 +90,13 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+} 
+
+.swiper-slide img {
+    max-width: 100%;
+    height: auto;
 }
+
 .thumb-container {
     margin-top: 20px;
     height: 100px;
@@ -145,6 +152,25 @@ main {
         slideImages.push('Gallery/artwork' + i + '.jpeg');
     }
 
+    // Add slides
+    for (let i = 0; i < totalSlides; i++) {
+        var slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+
+        var img = document.createElement('img');
+        img.src = slideImages[i];
+        slide.appendChild(img);
+        document.querySelector('.main-slider .swiper-wrapper').appendChild(slide);
+
+        var thumb = document.createElement('div');
+        thumb.className = 'swiper-slide';
+        var thumbImg = document.createElement('img');
+        thumbImg.src = slideImages[i];
+        thumbImg.className = 'thumb-image';
+        thumb.appendChild(thumbImg);
+        document.querySelector('.thumb-slider .swiper-wrapper').appendChild(thumb);
+    }
+
     // Initialize main slider
     var mainSlider = new Swiper('.main-slider', {
         slidesPerView: 1,
@@ -166,26 +192,8 @@ main {
     // Link main slider and thumbnail slider
     mainSlider.controller.control = thumbSlider;
     thumbSlider.controller.control = mainSlider;
-
-    // Add slides
-    for (let i = 0; i < totalSlides; i++) {
-        var slide = document.createElement('div');
-        slide.className = 'swiper-slide';
-
-        var img = document.createElement('img');
-        img.src = slideImages[i];
-        slide.appendChild(img);
-        mainSlider.appendSlide(slide);
-
-        var thumb = document.createElement('div');
-        thumb.className = 'swiper-slide';
-        var thumbImg = document.createElement('img');
-        thumbImg.src = slideImages[i];
-        thumbImg.className = 'thumb-image';
-        thumb.appendChild(thumbImg);
-        thumbSlider.appendSlide(thumb);
-    }
 </script>
+
 </body>
     <footer>
     <p>© 2023 Ecaterina Timofti | SMS: <a href="sms:+4746388048">+47 463 88 048</a> | <a href="https://www.instagram.com/oslo_nails_caterina/" target="_blank">Instagram</a></p>

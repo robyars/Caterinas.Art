@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Contact - Caterina's Art</title>
-    <style>
+        <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -46,13 +46,28 @@
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
         }
-	  footer a {
-    color: #fff;  /* white text color */
-}
-
-footer a:hover {
-    color: #ddd;  /* lighter grey color on hover */
-}
+        footer a {
+            color: #fff;  /* white text color */
+        }
+        footer a:hover {
+            color: #ddd;  /* lighter grey color on hover */
+        }
+        /* Mobile-specific styles */
+        @media (max-width: 767px) {
+            header {
+                padding: 10px 0;
+            }
+            nav ul li {
+                margin: 0 5px;
+            }
+            main {
+                padding: 10px;
+                border-radius: 0;
+            }
+            footer {
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
